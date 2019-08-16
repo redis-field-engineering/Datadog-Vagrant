@@ -1,0 +1,50 @@
+---
+
+- hosts: all
+  become: yes
+  become_user: root
+  become_method: sudo
+  gather_facts: yes
+  vars_files:
+    - vars/main.yml
+
+  pre_tasks:
+    - name: Update Apt Cache
+      apt: update_cache=yes cache_valid_time=86400
+      when: ansible_os_family == "Debian"
+    - name: Ubuntu Packages
+      apt: >
+        pkg={{item}}
+        state=installed
+      with_items:
+        - htop
+        - iotop
+        - git
+        - sysstat
+        - vim
+        - tmux
+        - tree
+        - tcpdump
+        - unzip
+      when: ansible_os_family == "Debian"
+    - name: CentOS packages
+      yum: pkg={{item}} state=installed
+      with_items:
+       - bind-utils
+       - sysstat
+       - tmux
+       - wget
+       - git
+       - vim-enhanced
+       - iotop
+       - tree
+       - tcpdump
+       - lsof
+       - telnet
+       - unzip
+      when: ansible_distribution == "CentOS"
+
+
+  roles:
+    - yatesr.timezone
+    - Datadog.datadog
