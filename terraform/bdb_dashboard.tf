@@ -7,7 +7,7 @@ resource "datadog_dashboard" "dbd_dashboard" {
   title         = "Redis Enterprise Database Dashboard"
   description   = "Created using the Datadog provider in Terraform"
   layout_type   = "ordered"
-  is_read_only  = false
+  is_read_only  = true
 
   widget {
     timeseries_definition {
@@ -66,6 +66,46 @@ resource "datadog_dashboard" "dbd_dashboard" {
         display_type = "area"
       }
       title = "Read Latency"
+    }
+  }
+
+  widget {
+    timeseries_definition {
+      request {
+        q = "avg:redisenterprise.bdb_write_req{$db_id,$cluster_name} by {bdb}"
+        display_type = "area"
+      }
+      title = "Write Requests"
+    }
+  }
+
+  widget {
+    timeseries_definition {
+      request {
+        q = "avg:redisenterprise.bdb_read_req{$db_id,$cluster_name} by {bdb}"
+        display_type = "area"
+      }
+      title = "Read Requests"
+    }
+  }
+
+  widget {
+    timeseries_definition {
+      request {
+        q = "avg:redisenterprise.bdb_evicted_objects{$db_id,$cluster_name} by {bdb}"
+        display_type = "area"
+      }
+      title = "Evicted Objects"
+    }
+  }
+
+  widget {
+    timeseries_definition {
+      request {
+        q = "avg:redisenterprise.bdb_expired_objects{$db_id,$cluster_name} by {bdb}"
+        display_type = "area"
+      }
+      title = "Expired Objects"
     }
   }
 
