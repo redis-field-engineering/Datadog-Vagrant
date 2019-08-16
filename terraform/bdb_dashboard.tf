@@ -12,7 +12,7 @@ resource "datadog_dashboard" "dbd_dashboard" {
   widget {
     timeseries_definition {
       request {
-        q = "avg:redisenterprise.bdb_used_memory{*} by {bdb}/avg:redisenterprise.redis_maxmemory{*} by {bdb}"
+        q = "avg:redisenterprise.bdb_used_memory{$db_id,$cluster_name} by {bdb}"
         display_type = "area"
       }
       title = "Memory Usage"
@@ -22,7 +22,7 @@ resource "datadog_dashboard" "dbd_dashboard" {
   widget {
     timeseries_definition {
       request {
-        q = "avg:redisenterprise.bdb_no_of_keys{*} by {bdb}"
+        q = "avg:redisenterprise.bdb_no_of_keys{$db_id,$cluster_name} by {bdb}"
         display_type = "area"
       }
       title = "Key Count"
@@ -32,7 +32,7 @@ resource "datadog_dashboard" "dbd_dashboard" {
   widget {
     timeseries_definition {
       request {
-        q = "avg:redisenterprise.bdb_conns{*} by {bdb}"
+        q = "avg:redisenterprise.bdb_conns{$db_id,$cluster_name} by {bdb}"
         display_type = "area"
       }
       title = "DB Connections"
@@ -42,7 +42,7 @@ resource "datadog_dashboard" "dbd_dashboard" {
   widget {
     timeseries_definition {
       request {
-        q = "avg:redisenterprise.bdb_total_req{*} by {bdb}"
+        q = "avg:redisenterprise.bdb_total_req{$db_id,$cluster_name} by {bdb}"
         display_type = "area"
       }
       title = "Total Requests per Second"
@@ -52,7 +52,7 @@ resource "datadog_dashboard" "dbd_dashboard" {
   widget {
     timeseries_definition {
       request {
-        q = "avg:redisenterprise.bdb_avg_write_latency{*} by {bdb}"
+        q = "avg:redisenterprise.bdb_avg_write_latency{$db_id,$cluster_name} by {bdb}"
         display_type = "area"
       }
       title = "Write Latency"
@@ -62,7 +62,7 @@ resource "datadog_dashboard" "dbd_dashboard" {
   widget {
     timeseries_definition {
       request {
-        q = "avg:redisenterprise.bdb_avg_read_latency{*} by {bdb}"
+        q = "avg:redisenterprise.bdb_avg_read_latency{$db_id,$cluster_name} by {bdb}"
         display_type = "area"
       }
       title = "Read Latency"
@@ -72,21 +72,32 @@ resource "datadog_dashboard" "dbd_dashboard" {
   widget {
     timeseries_definition {
       request {
-        q = "avg:redisenterprise.redis_mem_fragmentation_ratio{*} by {bdb}"
+        q = "avg:redisenterprise.bdb_ingress_bytes{$db_id,$cluster_name} by {bdb}"
         display_type = "area"
       }
-      title = "% Memory Fragmentation"
+      title = "Network Bytes In"
+    }
+  }
+
+  widget {
+    timeseries_definition {
+      request {
+        q = "avg:redisenterprise.bdb_egress_bytes{$db_id,$cluster_name} by {bdb}"
+        display_type = "area"
+      }
+      title = "Network Bytes Out"
     }
   }
 
   template_variable {
-    name   = "cluster"
-    prefix   = "cluster"
+    name   = "db_id"
+    prefix = "bdb"
     default = "*"
   }
+
   template_variable {
-    name   = "bdb"
-    prefix = "bdb"
+    name   = "cluster_name"
+    prefix = "cluster"
     default = "*"
   }
 
