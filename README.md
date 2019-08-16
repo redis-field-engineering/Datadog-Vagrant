@@ -5,6 +5,7 @@ How to setup and run a datadog for the redis enterprise prometheus endpoint
 ## Pre-reqs
 1) Ansible [installation](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
 2) Vagrant [installation](https://www.vagrantup.com/downloads.html)
+3) Datadog Application key and API key [get here](https://app.datadoghq.com/account/settings)
 
 ## Setup
 

@@ -1,3 +1,6 @@
 .vagrant
 ansible/roles/*
 ansible/vars/main.yml
+terraform/dashboard.tfvars
+terraform/.terraform
+terraform/terraform.tfstate*
