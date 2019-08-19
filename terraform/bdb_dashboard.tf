@@ -12,7 +12,17 @@ resource "datadog_dashboard" "dbd_dashboard" {
   widget {
     timeseries_definition {
       request {
-        q = "avg:redisenterprise.bdb_used_memory{$db_id,$cluster_name} by {bdb}"
+        q = "(avg:redise.bdb_used_memory{$db_id,$cluster_name} by {bdb}/avg:redise.bdb_memory_limit{$db_id,$cluster_name} by {bdb})*100"
+        display_type = "area"
+      }
+      title = "Memory Usage Percentage"
+    }
+  }
+
+  widget {
+    timeseries_definition {
+      request {
+        q = "avg:redise.bdb_used_memory{$db_id,$cluster_name} by {bdb}"
         display_type = "area"
       }
       title = "Memory Usage"
@@ -22,7 +32,7 @@ resource "datadog_dashboard" "dbd_dashboard" {
   widget {
     timeseries_definition {
       request {
-        q = "avg:redisenterprise.bdb_no_of_keys{$db_id,$cluster_name} by {bdb}"
+        q = "avg:redise.bdb_no_of_keys{$db_id,$cluster_name} by {bdb}"
         display_type = "area"
       }
       title = "Key Count"
@@ -32,7 +42,7 @@ resource "datadog_dashboard" "dbd_dashboard" {
   widget {
     timeseries_definition {
       request {
-        q = "avg:redisenterprise.bdb_conns{$db_id,$cluster_name} by {bdb}"
+        q = "avg:redise.bdb_conns{$db_id,$cluster_name} by {bdb}"
         display_type = "area"
       }
       title = "DB Connections"
@@ -42,7 +52,7 @@ resource "datadog_dashboard" "dbd_dashboard" {
   widget {
     timeseries_definition {
       request {
-        q = "avg:redisenterprise.bdb_total_req{$db_id,$cluster_name} by {bdb}"
+        q = "avg:redise.bdb_total_req{$db_id,$cluster_name} by {bdb}"
         display_type = "area"
       }
       title = "Total Requests per Second"
@@ -52,7 +62,7 @@ resource "datadog_dashboard" "dbd_dashboard" {
   widget {
     timeseries_definition {
       request {
-        q = "avg:redisenterprise.bdb_avg_write_latency{$db_id,$cluster_name} by {bdb}"
+        q = "avg:redise.bdb_avg_write_latency{$db_id,$cluster_name} by {bdb}"
         display_type = "area"
       }
       title = "Write Latency"
@@ -62,7 +72,7 @@ resource "datadog_dashboard" "dbd_dashboard" {
   widget {
     timeseries_definition {
       request {
-        q = "avg:redisenterprise.bdb_avg_read_latency{$db_id,$cluster_name} by {bdb}"
+        q = "avg:redise.bdb_avg_read_latency{$db_id,$cluster_name} by {bdb}"
         display_type = "area"
       }
       title = "Read Latency"
@@ -72,7 +82,7 @@ resource "datadog_dashboard" "dbd_dashboard" {
   widget {
     timeseries_definition {
       request {
-        q = "avg:redisenterprise.bdb_write_req{$db_id,$cluster_name} by {bdb}"
+        q = "avg:redise.bdb_write_req{$db_id,$cluster_name} by {bdb}"
         display_type = "area"
       }
       title = "Write Requests"
@@ -82,7 +92,7 @@ resource "datadog_dashboard" "dbd_dashboard" {
   widget {
     timeseries_definition {
       request {
-        q = "avg:redisenterprise.bdb_read_req{$db_id,$cluster_name} by {bdb}"
+        q = "avg:redise.bdb_read_req{$db_id,$cluster_name} by {bdb}"
         display_type = "area"
       }
       title = "Read Requests"
@@ -92,7 +102,7 @@ resource "datadog_dashboard" "dbd_dashboard" {
   widget {
     timeseries_definition {
       request {
-        q = "avg:redisenterprise.bdb_evicted_objects{$db_id,$cluster_name} by {bdb}"
+        q = "avg:redise.bdb_evicted_objects{$db_id,$cluster_name} by {bdb}"
         display_type = "area"
       }
       title = "Evicted Objects"
@@ -102,7 +112,7 @@ resource "datadog_dashboard" "dbd_dashboard" {
   widget {
     timeseries_definition {
       request {
-        q = "avg:redisenterprise.bdb_expired_objects{$db_id,$cluster_name} by {bdb}"
+        q = "avg:redise.bdb_expired_objects{$db_id,$cluster_name} by {bdb}"
         display_type = "area"
       }
       title = "Expired Objects"
@@ -112,7 +122,7 @@ resource "datadog_dashboard" "dbd_dashboard" {
   widget {
     timeseries_definition {
       request {
-        q = "avg:redisenterprise.bdb_ingress_bytes{$db_id,$cluster_name} by {bdb}"
+        q = "avg:redise.bdb_ingress_bytes{$db_id,$cluster_name} by {bdb}"
         display_type = "area"
       }
       title = "Network Bytes In"
@@ -122,7 +132,7 @@ resource "datadog_dashboard" "dbd_dashboard" {
   widget {
     timeseries_definition {
       request {
-        q = "avg:redisenterprise.bdb_egress_bytes{$db_id,$cluster_name} by {bdb}"
+        q = "avg:redise.bdb_egress_bytes{$db_id,$cluster_name} by {bdb}"
         display_type = "area"
       }
       title = "Network Bytes Out"
