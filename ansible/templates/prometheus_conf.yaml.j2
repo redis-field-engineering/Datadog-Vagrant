@@ -1,0 +1,38 @@
+# {{ ansible_managed }}
+init_config:
+
+instances:
+  - prometheus_url: {{ redis_enterprise_prometheus_endpoint }}
+    ssl_ca_cert: false
+    namespace: redise
+    max_returned_metrics: 2000
+    metrics:
+      - bdb_avg_latency
+      - bdb_avg_latency_max
+      - bdb_avg_other_latency
+      - bdb_avg_read_latency
+      - bdb_avg_write_latency
+      - bdb_conns
+      - bdb_egress_bytes
+      - bdb_evicted_objects
+      - bdb_expired_objects
+      - bdb_fork_cpu_system
+      - bdb_ingress_bytes
+      - bdb_main_thread_cpu_system
+      - bdb_main_thread_cpu_system_max
+      - bdb_memory_limit
+      - bdb_no_of_keys
+      - bdb_other_req
+      - bdb_read_req
+      - bdb_shard_cpu_system
+      - bdb_shard_cpu_system_max
+      - bdb_total_req
+      - bdb_total_req_max
+      - bdb_used_memory
+      - bdb_write_req
+      - listener_acc_latency
+      - listener_conns
+      - listener_total_req
+
+
+#  - prometheus_url:  http://azure1.mague.com:8070/metrics 
