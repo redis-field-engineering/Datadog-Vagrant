@@ -26,3 +26,9 @@ cd ansible && rm -rf roles/* && ansible-galaxy install --roles-path roles -r req
 5. ```terraform apply -var-file=dashboard.tfvars```
 6. You should be able to view your [dashboard](https://app.datadoghq.com/dashboard/lists)
 6. You should be able to view your [monitors](https://app.datadoghq.com/monitors/manage)
+
+## Example Dashboards and Alerts
+
+![Dashboard Example](docs/datadog_dashboard.png "Example Dashboard")
+![Alert Example](docs/datadog_monitors.png "Example Alerts")
+
