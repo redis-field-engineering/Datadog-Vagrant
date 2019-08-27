@@ -29,7 +29,7 @@ resource "datadog_dashboard" "dbd_dashboard" {
       custom_unit = "%"
      }
     layout = {
-      height = 15
+      height = 10
       width = 30
       x = 0
       y = 0
@@ -46,7 +46,7 @@ resource "datadog_dashboard" "dbd_dashboard" {
       custom_unit = " "
     }
     layout = {
-      height = 15
+      height = 10
       width = 30
       x = 31
       y = 0 
@@ -56,13 +56,13 @@ resource "datadog_dashboard" "dbd_dashboard" {
   widget {
     query_value_definition {
       request {
-        q = "sum:redise.listener_total_req{$db_id,$cluster_name} by {bdb}"
+        q = "avg:redise.bdb_conns{$db_id,$cluster_name} by {bdb}"
       }
       title = "Connections"
       custom_unit = ""
     }
     layout = {
-      height = 15
+      height = 10
       width = 30
       x = 62
       y = 0 
@@ -78,10 +78,10 @@ resource "datadog_dashboard" "dbd_dashboard" {
       title = "Memory Usage"
     }
     layout = {
-      height = 15
+      height = 10
       width = 45
       x = 0
-      y = 16
+      y = 11
     }
   }
 
@@ -94,10 +94,10 @@ resource "datadog_dashboard" "dbd_dashboard" {
       title = "DB Connections"
     }
     layout = {
-      height = 15
+      height = 10
       width = 45
       x = 47
-      y = 16
+      y = 11
     }
   }
 
@@ -110,10 +110,10 @@ resource "datadog_dashboard" "dbd_dashboard" {
       title = "Total Requests per Second"
     }
     layout = {
-      height = 15
+      height = 10
       width = 92
       x = 0
-      y = 32
+      y = 22
     }
   }
 
@@ -126,10 +126,10 @@ resource "datadog_dashboard" "dbd_dashboard" {
       title = "Write Latency"
     }
     layout = {
-      height = 15
+      height = 10
       width = 45
       x = 0
-      y = 48
+      y = 33
     }
   }
 
@@ -142,10 +142,10 @@ resource "datadog_dashboard" "dbd_dashboard" {
       title = "Read Latency"
     }
     layout = {
-      height = 15
+      height = 10
       width = 45
       x = 47
-      y = 48
+      y = 33
     }
   }
 
@@ -158,10 +158,10 @@ resource "datadog_dashboard" "dbd_dashboard" {
       title = "Write Requests"
     }
     layout = {
-      height = 15
+      height = 10
       width = 45
       x = 0
-      y = 64
+      y = 44
     }
   }
 
@@ -174,10 +174,10 @@ resource "datadog_dashboard" "dbd_dashboard" {
       title = "Read Requests"
     }
     layout = {
-      height = 15
+      height = 10
       width = 45
       x = 47 
-      y = 64
+      y = 44
     }
   }
 
@@ -190,10 +190,10 @@ resource "datadog_dashboard" "dbd_dashboard" {
       title = "Evicted Objects"
     }
     layout = {
-      height = 15
+      height = 10
       width = 45
       x = 0
-      y = 80
+      y = 55
     }
   }
 
@@ -206,10 +206,10 @@ resource "datadog_dashboard" "dbd_dashboard" {
       title = "Expired Objects"
     }
     layout = {
-      height = 15
+      height = 10
       width = 45
       x = 47
-      y = 80
+      y = 55
     }
   }
 
@@ -222,10 +222,10 @@ resource "datadog_dashboard" "dbd_dashboard" {
       title = "Network Bytes In"
     }
     layout = {
-      height = 15
+      height = 10
       width = 45
       x = 0
-      y = 96
+      y = 66
     }
   }
 
@@ -238,10 +238,10 @@ resource "datadog_dashboard" "dbd_dashboard" {
       title = "Network Bytes Out"
     }
     layout = {
-      height = 15
+      height = 10
       width = 45
       x = 47
-      y = 96
+      y = 66
     }
   }
 
