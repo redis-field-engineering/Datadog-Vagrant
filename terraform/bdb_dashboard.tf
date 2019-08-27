@@ -111,8 +111,24 @@ resource "datadog_dashboard" "dbd_dashboard" {
     }
     layout = {
       height = 10
-      width = 92
+      width = 45
       x = 0
+      y = 22
+    }
+  }
+
+  widget {
+    timeseries_definition {
+      request {
+        q = "sum:redise.bdb_no_of_keys{$db_id,$cluster_name} by {bdb}"
+        display_type = "area"
+      }
+      title = "Key Count"
+    }
+    layout = {
+      height = 10
+      width = 45
+      x = 47
       y = 22
     }
   }
