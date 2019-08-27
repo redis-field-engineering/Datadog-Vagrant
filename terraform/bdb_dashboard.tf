@@ -29,204 +29,221 @@ resource "datadog_dashboard" "dbd_dashboard" {
       custom_unit = "%"
      }
     layout = {
-      height = 20
-      width = 50
-      x = 25
-      y = 5
+      height = 15
+      width = 30
+      x = 0
+      y = 0
     }
   }
-
-#  widget {
-#    timeseries_definition {
-#      request {
-#        q = "avg:redise.bdb_used_memory{$db_id,$cluster_name} by {bdb}"
-#        display_type = "area"
-#      }
-#      title = "Memory Usage"
-#    }
-#    layout = {
-#      height = 20
-#      width = 50
-#      x = 85
-#      y = 5
-#    }
-#  }
 
   widget {
     query_value_definition {
       request {
-        q = "avg:redise.bdb_no_of_keys{$db_id,$cluster_name} by {bdb}"
+        q = "sum:redise.bdb_no_of_keys{$db_id,$cluster_name} by {bdb}"
       }
       title = "Key Count"
-      custom_unit = "objects"
+      autoscale = true
+      custom_unit = " "
     }
     layout = {
-      height = 20
-      width = 50
-      x = 85
-      y = 5 
+      height = 15
+      width = 30
+      x = 31
+      y = 0 
     }
   }
 
-#  widget {
-#    timeseries_definition {
-#      request {
-#        q = "avg:redise.bdb_conns{$db_id,$cluster_name} by {bdb}"
-#        display_type = "area"
-#      }
-#      title = "DB Connections"
-#    }
-#    layout = {
-#      height = 43
-#      width = 32
-#      x = 65
-#      y = 60
-#    }
-#  }
-#
-#  widget {
-#    timeseries_definition {
-#      request {
-#        q = "avg:redise.bdb_total_req{$db_id,$cluster_name} by {bdb}"
-#        display_type = "area"
-#      }
-#      title = "Total Requests per Second"
-#    }
-#    layout = {
-#      height = 43
-#      width = 32
-#      x = 5
-#      y = 60
-#    }
-#  }
-#
-#  widget {
-#    timeseries_definition {
-#      request {
-#        q = "avg:redise.bdb_avg_write_latency{$db_id,$cluster_name} by {bdb}"
-#        display_type = "area"
-#      }
-#      title = "Write Latency"
-#    }
-#    layout = {
-#      height = 43
-#      width = 32
-#      x = 5
-#      y = 60
-#    }
-#  }
-#
-#  widget {
-#    timeseries_definition {
-#      request {
-#        q = "avg:redise.bdb_avg_read_latency{$db_id,$cluster_name} by {bdb}"
-#        display_type = "area"
-#      }
-#      title = "Read Latency"
-#    }
-#    layout = {
-#      height = 43
-#      width = 32
-#      x = 5
-#      y = 60
-#    }
-#  }
-#
-#  widget {
-#    timeseries_definition {
-#      request {
-#        q = "avg:redise.bdb_write_req{$db_id,$cluster_name} by {bdb}"
-#        display_type = "area"
-#      }
-#      title = "Write Requests"
-#    }
-#    layout = {
-#      height = 43
-#      width = 32
-#      x = 5
-#      y = 60
-#    }
-#  }
-#
-#  widget {
-#    timeseries_definition {
-#      request {
-#        q = "avg:redise.bdb_read_req{$db_id,$cluster_name} by {bdb}"
-#        display_type = "area"
-#      }
-#      title = "Read Requests"
-#    }
-#    layout = {
-#      height = 43
-#      width = 32
-#      x = 5
-#      y = 60
-#    }
-#  }
-#
-#  widget {
-#    timeseries_definition {
-#      request {
-#        q = "avg:redise.bdb_evicted_objects{$db_id,$cluster_name} by {bdb}"
-#        display_type = "area"
-#      }
-#      title = "Evicted Objects"
-#    }
-#    layout = {
-#      height = 43
-#      width = 32
-#      x = 5
-#      y = 60
-#    }
-#  }
-#
-#  widget {
-#    timeseries_definition {
-#      request {
-#        q = "avg:redise.bdb_expired_objects{$db_id,$cluster_name} by {bdb}"
-#        display_type = "area"
-#      }
-#      title = "Expired Objects"
-#    }
-#    layout = {
-#      height = 43
-#      width = 32
-#      x = 5
-#      y = 60
-#    }
-#  }
-#
-#  widget {
-#    timeseries_definition {
-#      request {
-#        q = "avg:redise.bdb_ingress_bytes{$db_id,$cluster_name} by {bdb}"
-#        display_type = "area"
-#      }
-#      title = "Network Bytes In"
-#    }
-#    layout = {
-#      height = 43
-#      width = 32
-#      x = 5
-#      y = 60
-#    }
-#  }
-#
-#  widget {
-#    timeseries_definition {
-#      request {
-#        q = "avg:redise.bdb_egress_bytes{$db_id,$cluster_name} by {bdb}"
-#        display_type = "area"
-#      }
-#      title = "Network Bytes Out"
-#    }
-#    layout = {
-#      height = 43
-#      width = 32
-#      x = 5
-#      y = 60
-#    }
-#  }
+  widget {
+    query_value_definition {
+      request {
+        q = "sum:redise.listener_total_req{$db_id,$cluster_name} by {bdb}"
+      }
+      title = "Connections"
+      custom_unit = ""
+    }
+    layout = {
+      height = 15
+      width = 30
+      x = 62
+      y = 0 
+    }
+  }
+
+  widget {
+    timeseries_definition {
+      request {
+        q = "avg:redise.bdb_used_memory{$db_id,$cluster_name} by {bdb}"
+        display_type = "area"
+      }
+      title = "Memory Usage"
+    }
+    layout = {
+      height = 15
+      width = 45
+      x = 0
+      y = 16
+    }
+  }
+
+  widget {
+    timeseries_definition {
+      request {
+        q = "avg:redise.bdb_conns{$db_id,$cluster_name} by {bdb}"
+        display_type = "area"
+      }
+      title = "DB Connections"
+    }
+    layout = {
+      height = 15
+      width = 45
+      x = 47
+      y = 16
+    }
+  }
+
+  widget {
+    timeseries_definition {
+      request {
+        q = "avg:redise.bdb_total_req{$db_id,$cluster_name} by {bdb}"
+        display_type = "area"
+      }
+      title = "Total Requests per Second"
+    }
+    layout = {
+      height = 15
+      width = 92
+      x = 0
+      y = 32
+    }
+  }
+
+  widget {
+    timeseries_definition {
+      request {
+        q = "avg:redise.bdb_avg_write_latency{$db_id,$cluster_name} by {bdb}"
+        display_type = "area"
+      }
+      title = "Write Latency"
+    }
+    layout = {
+      height = 15
+      width = 45
+      x = 0
+      y = 48
+    }
+  }
+
+  widget {
+    timeseries_definition {
+      request {
+        q = "avg:redise.bdb_avg_read_latency{$db_id,$cluster_name} by {bdb}"
+        display_type = "area"
+      }
+      title = "Read Latency"
+    }
+    layout = {
+      height = 15
+      width = 45
+      x = 47
+      y = 48
+    }
+  }
+
+  widget {
+    timeseries_definition {
+      request {
+        q = "avg:redise.bdb_write_req{$db_id,$cluster_name} by {bdb}"
+        display_type = "area"
+      }
+      title = "Write Requests"
+    }
+    layout = {
+      height = 15
+      width = 45
+      x = 0
+      y = 64
+    }
+  }
+
+  widget {
+    timeseries_definition {
+      request {
+        q = "avg:redise.bdb_read_req{$db_id,$cluster_name} by {bdb}"
+        display_type = "area"
+      }
+      title = "Read Requests"
+    }
+    layout = {
+      height = 15
+      width = 45
+      x = 47 
+      y = 64
+    }
+  }
+
+  widget {
+    timeseries_definition {
+      request {
+        q = "avg:redise.bdb_evicted_objects{$db_id,$cluster_name} by {bdb}"
+        display_type = "area"
+      }
+      title = "Evicted Objects"
+    }
+    layout = {
+      height = 15
+      width = 45
+      x = 0
+      y = 80
+    }
+  }
+
+  widget {
+    timeseries_definition {
+      request {
+        q = "avg:redise.bdb_expired_objects{$db_id,$cluster_name} by {bdb}"
+        display_type = "area"
+      }
+      title = "Expired Objects"
+    }
+    layout = {
+      height = 15
+      width = 45
+      x = 47
+      y = 80
+    }
+  }
+
+  widget {
+    timeseries_definition {
+      request {
+        q = "avg:redise.bdb_ingress_bytes{$db_id,$cluster_name} by {bdb}"
+        display_type = "area"
+      }
+      title = "Network Bytes In"
+    }
+    layout = {
+      height = 15
+      width = 45
+      x = 0
+      y = 96
+    }
+  }
+
+  widget {
+    timeseries_definition {
+      request {
+        q = "avg:redise.bdb_egress_bytes{$db_id,$cluster_name} by {bdb}"
+        display_type = "area"
+      }
+      title = "Network Bytes Out"
+    }
+    layout = {
+      height = 15
+      width = 45
+      x = 47
+      y = 96
+    }
+  }
 
   template_variable {
     name   = "db_id"
