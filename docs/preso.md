@@ -46,8 +46,24 @@ slideNumber: true
 | Requirement  | Usage |
 |---------------|-----------|
 | Datadog API Key  | Needed to send data to Datadog |
-| Datadog Application Key  | Needed to submit data to Datadog |
+| Datadog Application Key  | Needed to create dashboards and alerts |
 | Terraform  | for automatically configuring the Datadog dashboards and metadata |
 | Ansible  | (optional) for automatically configuring the Datadog agent |
 | | |
 </small>
+
+
+---
+
+## Datadog Config
+
+<br>
+We need to create API and Application keys for programatic access
+
+[https://app.datadoghq.com/account/settings#api](https://app.datadoghq.com/account/settings#api)
+
+---
+
+## Datadog Config
+
+<img src="datadog_key_setup.png" style="background:none; border:none; box-shadow:none;"> 
