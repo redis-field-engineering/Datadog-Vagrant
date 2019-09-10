@@ -6,16 +6,66 @@ provider "datadog" {
 resource "datadog_dashboard" "dbd_dashboard" {
   title         = "Redis Enterprise Database Dashboard"
   description   = "Created using the Datadog provider in Terraform"
-  layout_type   = "ordered"
+  layout_type   = "free"
   is_read_only  = true
 
   widget {
-    timeseries_definition {
+     query_value_definition{
       request {
         q = "(avg:redise.bdb_used_memory{$db_id,$cluster_name} by {bdb}/avg:redise.bdb_memory_limit{$db_id,$cluster_name} by {bdb})*100"
-        display_type = "area"
+        conditional_formats {
+          comparator = "<"
+          value = "80"
+          palette = "white_on_green"
+        }
+        conditional_formats {
+          comparator = ">"
+          value = "80"
+          palette = "white_on_red"
+        }
       }
       title = "Memory Usage Percentage"
+      precision = 2
+      custom_unit = "%"
+     }
+    layout = {
+      height = 10
+      width = 30
+      x = 0
+      y = 0
+    }
+  }
+
+  widget {
+    query_value_definition {
+      request {
+        q = "sum:redise.bdb_no_of_keys{$db_id,$cluster_name} by {bdb}"
+      }
+      title = "Key Count"
+      autoscale = true
+      custom_unit = " "
+    }
+    layout = {
+      height = 10
+      width = 30
+      x = 31
+      y = 0 
+    }
+  }
+
+  widget {
+    query_value_definition {
+      request {
+        q = "avg:redise.bdb_conns{$db_id,$cluster_name} by {bdb}"
+      }
+      title = "Connections"
+      custom_unit = ""
+    }
+    layout = {
+      height = 10
+      width = 30
+      x = 62
+      y = 0 
     }
   }
 
@@ -27,15 +77,11 @@ resource "datadog_dashboard" "dbd_dashboard" {
       }
       title = "Memory Usage"
     }
-  }
-
-  widget {
-    timeseries_definition {
-      request {
-        q = "avg:redise.bdb_no_of_keys{$db_id,$cluster_name} by {bdb}"
-        display_type = "area"
-      }
-      title = "Key Count"
+    layout = {
+      height = 10
+      width = 45
+      x = 0
+      y = 11
     }
   }
 
@@ -47,6 +93,12 @@ resource "datadog_dashboard" "dbd_dashboard" {
       }
       title = "DB Connections"
     }
+    layout = {
+      height = 10
+      width = 45
+      x = 47
+      y = 11
+    }
   }
 
   widget {
@@ -56,6 +108,28 @@ resource "datadog_dashboard" "dbd_dashboard" {
         display_type = "area"
       }
       title = "Total Requests per Second"
+    }
+    layout = {
+      height = 10
+      width = 45
+      x = 0
+      y = 22
+    }
+  }
+
+  widget {
+    timeseries_definition {
+      request {
+        q = "sum:redise.bdb_no_of_keys{$db_id,$cluster_name} by {bdb}"
+        display_type = "area"
+      }
+      title = "Key Count"
+    }
+    layout = {
+      height = 10
+      width = 45
+      x = 47
+      y = 22
     }
   }
 
@@ -67,6 +141,12 @@ resource "datadog_dashboard" "dbd_dashboard" {
       }
       title = "Write Latency"
     }
+    layout = {
+      height = 10
+      width = 45
+      x = 0
+      y = 33
+    }
   }
 
   widget {
@@ -76,6 +156,12 @@ resource "datadog_dashboard" "dbd_dashboard" {
         display_type = "area"
       }
       title = "Read Latency"
+    }
+    layout = {
+      height = 10
+      width = 45
+      x = 47
+      y = 33
     }
   }
 
@@ -87,6 +173,12 @@ resource "datadog_dashboard" "dbd_dashboard" {
       }
       title = "Write Requests"
     }
+    layout = {
+      height = 10
+      width = 45
+      x = 0
+      y = 44
+    }
   }
 
   widget {
@@ -96,6 +188,12 @@ resource "datadog_dashboard" "dbd_dashboard" {
         display_type = "area"
       }
       title = "Read Requests"
+    }
+    layout = {
+      height = 10
+      width = 45
+      x = 47 
+      y = 44
     }
   }
 
@@ -107,6 +205,12 @@ resource "datadog_dashboard" "dbd_dashboard" {
       }
       title = "Evicted Objects"
     }
+    layout = {
+      height = 10
+      width = 45
+      x = 0
+      y = 55
+    }
   }
 
   widget {
@@ -116,6 +220,12 @@ resource "datadog_dashboard" "dbd_dashboard" {
         display_type = "area"
       }
       title = "Expired Objects"
+    }
+    layout = {
+      height = 10
+      width = 45
+      x = 47
+      y = 55
     }
   }
 
@@ -127,6 +237,12 @@ resource "datadog_dashboard" "dbd_dashboard" {
       }
       title = "Network Bytes In"
     }
+    layout = {
+      height = 10
+      width = 45
+      x = 0
+      y = 66
+    }
   }
 
   widget {
@@ -136,6 +252,12 @@ resource "datadog_dashboard" "dbd_dashboard" {
         display_type = "area"
       }
       title = "Network Bytes Out"
+    }
+    layout = {
+      height = 10
+      width = 45
+      x = 47
+      y = 66
     }
   }
 

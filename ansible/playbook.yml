@@ -26,6 +26,7 @@
         - htop
         - iotop
         - git
+        - ntp
         - sysstat
         - vim
         - tmux
