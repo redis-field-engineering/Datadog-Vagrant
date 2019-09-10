@@ -8,10 +8,9 @@ digraph D {
     Servers_icon[image="server.svg"];
 
     subgraph cluster_Datadog {
-		  node [style="setlinewidth(0)"];
     		  style=invis;
 		  label="Agent";
-		  Datadog_icon[image="dd-icon.svg" style="setlinewidth(0)"];
+		  Datadog_icon[image="dd-icon.svg"];
     };
   }
 
@@ -34,25 +33,21 @@ digraph D {
     label = "Redis Cluster";
     Redis_icon[image="server.svg"];
 	subgraph cluster_Prometheus {
-		node [style="setlinewidth(0)"];
     		style=invis;
 		label="Exporter";
 		Prometheus_icon[image="prom.svg"];
 	}
 	subgraph cluster_redis1 {
-		node [style="setlinewidth(0)"];
     		style=invis;
 		label=""
 		redis1_icon[image="redis-icon.svg"];
 	}
 	subgraph cluster_redis2 {
-		node [style="setlinewidth(0)"];
     		style=invis;
 		label=""
 		redis2_icon[image="redis-icon.svg"];
 	}
 	subgraph cluster_redis3 {
-		node [style="setlinewidth(0)"];
     		style=invis;
 		label=""
 		redis3_icon[image="redis-icon.svg"];
