@@ -1,0 +1,72 @@
+digraph D {
+
+  node [shape=plaintext, fontsize=10, label=""]; 
+
+
+  subgraph cluster_p {
+    label = "Stats Server";
+    Servers_icon[image="server.svg"];
+
+    subgraph cluster_Datadog {
+		  node [style="setlinewidth(0)"];
+    		  style=invis;
+		  label="Agent";
+		  Datadog_icon[image="dd-icon.svg" style="setlinewidth(0)"];
+    };
+  }
+
+  subgraph consumer_a {
+    label = "Stats Server";
+    enduser_icon[image="computer-laptop.svg"];
+  }
+
+  subgraph internet_a {
+    label = "Internet";
+    internet_icon[image="internet.svg"];
+  }
+
+  subgraph ddhq_a {
+    label = "Datadog";
+    ddhq_icon[image="dd-icon.svg"];
+  }
+
+  subgraph cluster_j {
+    label = "Redis Cluster";
+    Redis_icon[image="server.svg"];
+	subgraph cluster_Prometheus {
+		node [style="setlinewidth(0)"];
+    		style=invis;
+		label="Exporter";
+		Prometheus_icon[image="prom.svg"];
+	}
+	subgraph cluster_redis1 {
+		node [style="setlinewidth(0)"];
+    		style=invis;
+		label=""
+		redis1_icon[image="redis-icon.svg"];
+	}
+	subgraph cluster_redis2 {
+		node [style="setlinewidth(0)"];
+    		style=invis;
+		label=""
+		redis2_icon[image="redis-icon.svg"];
+	}
+	subgraph cluster_redis3 {
+		node [style="setlinewidth(0)"];
+    		style=invis;
+		label=""
+		redis3_icon[image="redis-icon.svg"];
+	}
+
+  }
+
+Datadog_icon -> Prometheus_icon [ label="  poll", fontsize=8, color="blue", fontcolor="blue" ];
+Datadog_icon -> internet_icon [ label="    submit", fontsize=8, color="red", fontcolor="red" ];
+internet_icon -> ddhq_icon [ label="    submit", fontsize=8, color="red", fontcolor="red" ];
+enduser_icon -> ddhq_icon [ label="   https", fontsize=8, color="blue", fontcolor="blue" ];
+Prometheus_icon -> redis1_icon [ label="collect", fontsize=8, color="blue", fontcolor="blue" ];
+Prometheus_icon -> redis2_icon [ label="collect", fontsize=8, color="blue", fontcolor="blue" ];
+Prometheus_icon -> redis3_icon [ label="collect", fontsize=8, color="blue", fontcolor="blue" ];
+
+
+}
