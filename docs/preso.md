@@ -2,7 +2,6 @@
 theme : "night"
 transition: "convex"
 highlightTheme: "darkula"
-logoImg: "redis-labs-header.png"
 slideNumber: true
 ---
 
@@ -317,26 +316,31 @@ terraform apply -var-file=dashboard.tfvars
 
 ---
 
-### Example Monitors
-<br>
-<div align="left">
-No Active Database Connections
+#### Example Monitors
+- No Active Database Connections
 ```
 "avg(last_15m):avg:redise.bdb_conns{*} by {bdb} < 1"
 ```
 
-High Database Request Latency (10ms)
+- High Database Request Latency (10ms)
 ```
 "avg(last_15m):avg:redise.bdb_avg_latency{*} by {bdb} > 0.01"
 ```
 
-Database Key Eviction
+- Database Key Eviction
 ```
 "avg(last_5m):avg:redise.bdb_evicted_objects{*} by {bdb} > 0"
 ```
 
-Database Usage
+- Database Usage
 ```
 "avg(last_5m):( avg:redise.bdb_used_memory{*} by {bdb} 
  / avg:redise.bdb_memory_limit{*} by {bdb} ) * 100 > 85"
 ```
+
+
+---
+
+## Thank you
+<br><br>
+<small>Contact: [Chris Mague - christian@redislabs.com](mailto:christian@redislabs.com)</small>
