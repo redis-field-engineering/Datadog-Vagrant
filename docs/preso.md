@@ -105,6 +105,7 @@ We need to create API and Application keys for programatic access
     - stop: sudo systemctl stop datadog-agent
     - start: sudo systemctl start datadog-agent
     - status: sudo systemctl status datadog-agent
+
 </small>
 
 ---
@@ -117,6 +118,7 @@ We need to create API and Application keys for programatic access
 
 - Processes
     - restart: sudo systemctl restart datadog-agent
+
 </small>
 
 ---
