@@ -33,4 +33,4 @@ cd ansible && rm -rf roles/* && ansible-galaxy install --roles-path roles -r req
 ![Alert Example](docs/datadog_monitors.png "Example Alerts")
 
 ## Presenation Documenting Usage
-[PDF](./docs/presentation.pdf)
+[PDF Version of the presentation](./docs/presentation.pdf)
