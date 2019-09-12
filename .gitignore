@@ -4,3 +4,4 @@ ansible/vars/main.yml
 terraform/dashboard.tfvars
 terraform/.terraform
 terraform/terraform.tfstate*
+docs/export/*
