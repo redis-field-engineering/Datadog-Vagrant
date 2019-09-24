@@ -37,15 +37,15 @@ slideNumber: true
 
 ---
 
-<img src="datadog_dashboard.png"style="background:none; border:none; box-shadow:none;"> 
+<img src="datadog_dashboard.png" style="background:none; border:none; box-shadow:none;"> 
 
 ---
 
-<img src="datadog_monitors.png"style="background:none; border:none; box-shadow:none;"> 
+<img src="datadog_monitors.png" style="background:none; border:none; box-shadow:none;"> 
 
 ---
 
-<img src="diagram.png"style="background:none; border:none; box-shadow:none;"> 
+<img src="diagram.png" style="background:none; border:none; box-shadow:none;"> 
 
 ---
 
@@ -176,7 +176,9 @@ resource "datadog_metric_metadata" "bdb_used_memory" {
 ---
 
 #### Configuring Dashboards with Terraform
+
 <small>
+
 ```json
 provider "datadog" {
   api_key = "${var.datadog_api_key}"
@@ -216,6 +218,7 @@ resource "datadog_dashboard" "dbd_dashboard" {
 ### Configuring Monitors
 
 <small>
+
 ```json
 resource "datadog_monitor" "no_conns" {
   name               = "Redis Enterprise has no connections"
@@ -269,8 +272,10 @@ terraform apply -var-file=dashboard.tfvars
 |bdb_avg_write_latency|average latency of write requests|
 |bdb_avg_other_latency|average latency of other requests|
 |||
-</small>
+<br><br>
 <div align="left">Latency is measure from time the request hits the proxy until the response is sent back over the network</div>
+
+</small>
 
 ---
 
