@@ -5,3 +5,4 @@ terraform/dashboard.tfvars
 terraform/.terraform
 terraform/terraform.tfstate*
 docs/export/*
+ansible/*.retry
