@@ -7,6 +7,11 @@ How to setup and run a datadog for the redis enterprise prometheus endpoint
 2. Vagrant [installation](https://www.vagrantup.com/downloads.html)
 3. Datadog Application key and API key [get here](https://app.datadoghq.com/account/settings)
 4. Terraform to setup the dashboard and alerts [get here](https://www.terraform.io/downloads.html)
+5. Access to the [Prometheus Exporter Endpoint](https://docs.redislabs.com/latest/rs/administering/monitoring-metrics/prometheus-integration/)
+
+## Minimum Setup
+
+This repo contains everything necessary to spin up a local data dog collector and terraform configurations for setting up Datadog to recognize the telemetry data coming in.  The absolute minimum required is that you copy the datadog configuration file and populate it while running the terraform (documented below).
 
 ## Setup Data collection
 
