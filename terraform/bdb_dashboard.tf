@@ -23,9 +23,9 @@ resource "datadog_dashboard" "dbd_dashboard" {
       precision   = 2
       custom_unit = "%"
     }
-    layout = {
+    widget_layout {
       height = 10
-      width  = 30
+      width  = 32
       x      = 0
       y      = 0
     }
@@ -40,7 +40,7 @@ resource "datadog_dashboard" "dbd_dashboard" {
       autoscale   = true
       custom_unit = " "
     }
-    layout = {
+    widget_layout {
       height = 10
       width  = 30
       x      = 31
@@ -56,7 +56,7 @@ resource "datadog_dashboard" "dbd_dashboard" {
       title       = "Connections"
       custom_unit = ""
     }
-    layout = {
+    widget_layout {
       height = 10
       width  = 30
       x      = 62
@@ -72,7 +72,7 @@ resource "datadog_dashboard" "dbd_dashboard" {
       }
       title = "Memory Usage"
     }
-    layout = {
+    widget_layout {
       height = 10
       width  = 45
       x      = 0
@@ -88,7 +88,7 @@ resource "datadog_dashboard" "dbd_dashboard" {
       }
       title = "DB Connections"
     }
-    layout = {
+    widget_layout {
       height = 10
       width  = 45
       x      = 47
@@ -104,7 +104,7 @@ resource "datadog_dashboard" "dbd_dashboard" {
       }
       title = "Total Requests per Second"
     }
-    layout = {
+    widget_layout {
       height = 10
       width  = 45
       x      = 0
@@ -120,7 +120,7 @@ resource "datadog_dashboard" "dbd_dashboard" {
       }
       title = "Key Count"
     }
-    layout = {
+    widget_layout {
       height = 10
       width  = 45
       x      = 47
@@ -136,7 +136,7 @@ resource "datadog_dashboard" "dbd_dashboard" {
       }
       title = "Write Latency"
     }
-    layout = {
+    widget_layout {
       height = 10
       width  = 45
       x      = 0
@@ -152,7 +152,7 @@ resource "datadog_dashboard" "dbd_dashboard" {
       }
       title = "Read Latency"
     }
-    layout = {
+    widget_layout {
       height = 10
       width  = 45
       x      = 47
@@ -168,7 +168,7 @@ resource "datadog_dashboard" "dbd_dashboard" {
       }
       title = "Write Requests"
     }
-    layout = {
+    widget_layout {
       height = 10
       width  = 45
       x      = 0
@@ -184,7 +184,7 @@ resource "datadog_dashboard" "dbd_dashboard" {
       }
       title = "Read Requests"
     }
-    layout = {
+    widget_layout {
       height = 10
       width  = 45
       x      = 47
@@ -200,7 +200,7 @@ resource "datadog_dashboard" "dbd_dashboard" {
       }
       title = "Evicted Objects"
     }
-    layout = {
+    widget_layout {
       height = 10
       width  = 45
       x      = 0
@@ -216,7 +216,7 @@ resource "datadog_dashboard" "dbd_dashboard" {
       }
       title = "Expired Objects"
     }
-    layout = {
+    widget_layout {
       height = 10
       width  = 45
       x      = 47
@@ -232,7 +232,7 @@ resource "datadog_dashboard" "dbd_dashboard" {
       }
       title = "Network Bytes In"
     }
-    layout = {
+    widget_layout {
       height = 10
       width  = 45
       x      = 0
@@ -248,7 +248,7 @@ resource "datadog_dashboard" "dbd_dashboard" {
       }
       title = "Network Bytes Out"
     }
-    layout = {
+    widget_layout {
       height = 10
       width  = 45
       x      = 47
