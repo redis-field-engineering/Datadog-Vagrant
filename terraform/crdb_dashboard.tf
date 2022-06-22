@@ -27,7 +27,7 @@ resource "datadog_dashboard" "crdb_dashboard" {
       title     = "Sync Status"
       precision = 2
     }
-    layout = {
+    widget_layout {
       height = 10
       width  = 90
       x      = 0
@@ -43,7 +43,7 @@ resource "datadog_dashboard" "crdb_dashboard" {
       }
       title = "Syncer Ingress"
     }
-    layout = {
+    widget_layout {
       height = 10
       width  = 45
       x      = 0
@@ -59,7 +59,7 @@ resource "datadog_dashboard" "crdb_dashboard" {
       }
       title = "Syncer Egress"
     }
-    layout = {
+    widget_layout {
       height = 10
       width  = 45
       x      = 47
@@ -75,7 +75,7 @@ resource "datadog_dashboard" "crdb_dashboard" {
       }
       title = "Syncer Ingress Decompressed"
     }
-    layout = {
+    widget_layout {
       height = 10
       width  = 45
       x      = 0
@@ -91,7 +91,7 @@ resource "datadog_dashboard" "crdb_dashboard" {
       }
       title = "Syncer Egress Decompressed"
     }
-    layout = {
+    widget_layout {
       height = 10
       width  = 45
       x      = 47
@@ -107,7 +107,7 @@ resource "datadog_dashboard" "crdb_dashboard" {
       }
       title = "Max Pending Writes"
     }
-    layout = {
+    widget_layout {
       height = 10
       width  = 45
       x      = 0
@@ -123,7 +123,7 @@ resource "datadog_dashboard" "crdb_dashboard" {
       }
       title = "Min Pending Writes"
     }
-    layout = {
+    widget_layout {
       height = 10
       width  = 45
       x      = 47
@@ -139,7 +139,7 @@ resource "datadog_dashboard" "crdb_dashboard" {
       }
       title = "Sync Lag Time"
     }
-    layout = {
+    widget_layout {
       height = 10
       width  = 90
       x      = 0
