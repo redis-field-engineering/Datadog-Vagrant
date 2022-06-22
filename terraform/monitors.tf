@@ -6,19 +6,19 @@ resource "datadog_monitor" "no_conns" {
 
   query = "avg(last_15m):avg:redise.bdb_conns{*} by {bdb} < 1"
 
-  thresholds = {
+  monitor_thresholds {
     ok                = 0
-    warning           = 2
-    warning_recovery  = 4
     critical          = 1
+    warning           = 2
     critical_recovery = 3
+    warning_recovery  = 4
   }
 
   notify_no_data    = false
   renotify_interval = 60
 
   notify_audit = false
-  timeout_h    = 60
+  timeout_h    = 24
   include_tags = true
 
   tags = ["redise"]
@@ -32,16 +32,16 @@ resource "datadog_monitor" "high_db_latency" {
 
   query = "avg(last_15m):avg:redise.bdb_avg_latency{*} by {bdb} > 0.01"
 
-  thresholds = {
-    ok                = 0.005
-    critical          = 0.01
+  monitor_thresholds {
+    ok       = 0.005
+    critical = 0.01
   }
 
   notify_no_data    = false
   renotify_interval = 60
 
   notify_audit = false
-  timeout_h    = 60
+  timeout_h    = 24
   include_tags = true
 
   tags = ["redise"]
@@ -55,8 +55,8 @@ resource "datadog_monitor" "db_eviction" {
 
   query = "avg(last_5m):avg:redise.bdb_evicted_objects{*} by {bdb} > 0"
 
-  thresholds = {
-    ok          = 0
+  monitor_thresholds {
+    ok       = 0
     critical = 0.0
   }
 
@@ -64,7 +64,7 @@ resource "datadog_monitor" "db_eviction" {
   renotify_interval = 60
 
   notify_audit = false
-  timeout_h    = 60
+  timeout_h    = 24
   include_tags = true
 
   tags = ["redise"]
@@ -78,16 +78,16 @@ resource "datadog_monitor" "db_usage" {
 
   query = "avg(last_5m):( avg:redise.bdb_used_memory{*} by {bdb} / avg:redise.bdb_memory_limit{*} by {bdb} ) * 100 > 85"
 
-  thresholds = {
+  monitor_thresholds {
     warning  = 80
     critical = 85
   }
-
+  #
   notify_no_data    = false
   renotify_interval = 60
 
   notify_audit = false
-  timeout_h    = 60
+  timeout_h    = 24
   include_tags = true
 
   tags = ["redise"]
