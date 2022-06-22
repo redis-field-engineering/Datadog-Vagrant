@@ -4,5 +4,6 @@ ansible/vars/main.yml
 terraform/dashboard.tfvars
 terraform/.terraform
 terraform/terraform.tfstate*
+terraform/.terraform.lock.hcl
 docs/export/*
 ansible/*.retry

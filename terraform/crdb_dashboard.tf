@@ -1,8 +1,3 @@
-provider "datadog" {
-  api_key = var.datadog_api_key
-  app_key = var.datadog_app_key
-}
-
 resource "datadog_dashboard" "crdb_dashboard" {
   title        = "Redis Enterprise Active/Active Dashboard"
   description  = "Created using the Datadog provider in Terraform"
