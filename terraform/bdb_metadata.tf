@@ -186,3 +186,69 @@ resource "datadog_metric_metadata" "listener_acc_latency" {
   type        = "gauge"
   unit        = "second"
 }
+
+resource "datadog_metric_metadata" "bdb_crdt_syncer_egress_bytes" {
+  metric      = "redise.bdb_crdt_syncer_egress_bytes"
+  short_name  = "Redis Enterprise CRDB Sync Bytes Sent"
+  description = "Amount of network traffic sent by the active-active sync"
+  type        = "gauge"
+  unit        = "byte"
+}
+
+resource "datadog_metric_metadata" "bdb_crdt_syncer_egress_bytes_decompressed" {
+  metric      = "redise.bdb_crdt_syncer_egress_bytes_decompressed"
+  short_name  = "Redis Enterprise CRDB Sync Bytes Sent Decompressed"
+  description = "Amount of network traffic sent by the active-active sync decompressed"
+  type        = "gauge"
+  unit        = "byte"
+}
+
+resource "datadog_metric_metadata" "bdb_crdt_syncer_ingress_bytes" {
+  metric      = "redise.bdb_crdt_syncer_ingress_bytes"
+  short_name  = "Redis Enterprise CRDB Sync Bytes Received"
+  description = "Amount of network traffic sent by the active-active sync"
+  type        = "gauge"
+  unit        = "byte"
+}
+
+resource "datadog_metric_metadata" "bdb_crdt_syncer_ingress_bytes_decompressed" {
+  metric      = "redise.bdb_crdt_syncer_ingress_bytes_decompressed"
+  short_name  = "Redis Enterprise CRDB Sync Bytes Received Decompressed"
+  description = "Amount of network traffic sent by the active-active sync decompressed"
+  type        = "gauge"
+  unit        = "byte"
+}
+
+resource "datadog_metric_metadata" "bdb_crdt_syncer_local_ingress_lag_time" {
+  metric      = "redise.bdb_crdt_syncer_local_ingress_lag_time"
+  short_name  = "Redis Enterprise CRDB Sync lag"
+  description = "Redis Enterprise CRDB Sync lag"
+  type        = "gauge"
+  unit        = "second"
+}
+
+resource "datadog_metric_metadata" "bdb_crdt_syncer_pending_local_writes_max" {
+  metric      = "redise.bdb_crdt_syncer_pending_local_writes_max"
+  short_name  = "Redis Enterprise CRDB Pending writes Max"
+  description = "The maximum number of pending writes for the active-active sync"
+  type        = "gauge"
+  unit        = "operation"
+  per_unit    = "second"
+}
+
+resource "datadog_metric_metadata" "bdb_crdt_syncer_pending_local_writes_min" {
+  metric      = "redise.bdb_crdt_syncer_pending_local_writes_min"
+  short_name  = "Redis Enterprise CRDB Pending writes Min"
+  description = "The minimum number of pending writes for the active-active sync"
+  type        = "gauge"
+  unit        = "operation"
+  per_unit    = "second"
+}
+
+resource "datadog_metric_metadata" "bdb_crdt_syncer_status" {
+  metric      = "redise.bdb_crdt_syncer_status"
+  short_name  = "Redis Enterprise Sync status"
+  description = "Indicates the status of the syncer, 0 is in sync, 1 is sync, 2 is out of sync"
+  type        = "gauge"
+  unit        = "error"
+}
