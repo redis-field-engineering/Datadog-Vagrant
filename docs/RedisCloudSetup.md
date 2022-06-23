@@ -6,7 +6,7 @@ The Datadog Agent will run on any node that is peered with Redis Cloud and submi
 
 ## Pre-reqs
 1. Datadog Agent installed and running on a node in a peered VPC
-2. Terraform version >= 1.2.3 to setup the dashboard and alerts [get here](https://www.terraform.io/downloads.html)
+2. Terraform version >= 1.2.3 installed on workstation to setup the dashboard and alerts [get here](https://www.terraform.io/downloads.html)
 
 ## Setting up Access
 
