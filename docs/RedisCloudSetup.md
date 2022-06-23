@@ -1,5 +1,7 @@
 # Setting up Datadog for Redis Cloud
 
+The Datadog Agent will run on any node that is peered with Redis Cloud and submit metrics to Datadog's cloud service.
+
 ![Architecture](./DD_Prometheus.png)
 
 ## Pre-reqs
@@ -131,17 +133,16 @@ Login to your datadog profile:
 
 https://app.datadoghq.com/personal-settings/profile
 
-Under security - click on Application Keys
+##### Under security - click on Application Keys
 ![Setup 1](app_key_setup_1.png)
 
-Click on New Key
+##### Click on New Key
 ![Setup 2](app_key_setup_2.png)
 
-
-Give the key a descriptive name
+##### Give the key a descriptive name
 ![Setup 3](app_key_setup_3.png)
 
-Click on Copy Key
+##### Click on Copy Key
 ![Setup 4](app_key_setup_4.png)
 
 ```
