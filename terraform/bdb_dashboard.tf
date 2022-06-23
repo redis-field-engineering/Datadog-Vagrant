@@ -1,8 +1,7 @@
 resource "datadog_dashboard" "dbd_dashboard" {
-  title        = "Redis Enterprise Database Dashboard"
-  description  = "Created using the Datadog provider in Terraform"
-  layout_type  = "free"
-  is_read_only = true
+  title       = "Redis Enterprise Prometheus Database Dashboard"
+  description = "Created using the Datadog provider in Terraform"
+  layout_type = "free"
 
   widget {
     query_value_definition {

@@ -1,13 +1,12 @@
 resource "datadog_dashboard" "crdb_dashboard" {
-  title        = "Redis Enterprise Active/Active Dashboard"
-  description  = "Created using the Datadog provider in Terraform"
-  layout_type  = "free"
-  is_read_only = true
+  title       = "Redis Enterprise Prometheus Active/Active Dashboard"
+  description = "Created using the Datadog provider in Terraform"
+  layout_type = "free"
 
   widget {
     query_value_definition {
       request {
-        q = "(avg:redise.bdb_crdt_syncer_status{$cluster_name} by {crdt_guid})*100"
+        q = "(avg:redise.bdb_crdt_syncer_status{$cluster_name} by {crdt_guid})"
         conditional_formats {
           comparator = "<"
           value      = "1"
@@ -30,7 +29,7 @@ resource "datadog_dashboard" "crdb_dashboard" {
     widget_layout {
       height = 10
       width  = 90
-      x      = 0
+      x      = 22
       y      = 0
     }
   }
