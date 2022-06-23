@@ -2,6 +2,9 @@
 
 How to setup and run a datadog for the redis enterprise prometheus endpoint
 
+This can be run as a vagrant container detailed below.
+If you would like to use to collect Redis Cloud data see [Redis Cloud Setup](./docs/RedisCloudSetup.md)
+
 ## Pre-reqs
 1. Ansible [installation](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
 2. Vagrant [installation](https://www.vagrantup.com/downloads.html)
