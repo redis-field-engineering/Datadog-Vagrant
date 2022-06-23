@@ -34,6 +34,8 @@ curl -sk https://internal.blah.us-west2-mz.gcp.cloud.rlrcp.com:8070/metrics
 
 ```
 
+##### Example config for more than 1 endpoint
+
 ```
 init_config:
 
