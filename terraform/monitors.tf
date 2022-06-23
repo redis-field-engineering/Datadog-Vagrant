@@ -1,5 +1,5 @@
 resource "datadog_monitor" "no_conns" {
-  name               = "Redis Enterprise has no connections"
+  name               = "Redis Enterprise Prometheus has no connections"
   type               = "metric alert"
   message            = "There are no connections the the Redis Enterprise Database"
   escalation_message = "Some escalation notification goes here"
@@ -25,7 +25,7 @@ resource "datadog_monitor" "no_conns" {
 }
 
 resource "datadog_monitor" "high_db_latency" {
-  name               = "Redis Enterprise Latency Alert"
+  name               = "Redis Enterprise Prometheus Latency Alert"
   type               = "metric alert"
   message            = "Redis Operations are taking too long, check the slow log"
   escalation_message = "Some escalation notification goes here"
@@ -48,7 +48,7 @@ resource "datadog_monitor" "high_db_latency" {
 }
 
 resource "datadog_monitor" "db_eviction" {
-  name               = "Redis Enterprise Eviction Alert"
+  name               = "Redis Enterprise Prometheus Eviction Alert"
   type               = "metric alert"
   message            = "Redis is out of memory so keys are being evicted"
   escalation_message = "Some escalation notification goes here"
@@ -71,7 +71,7 @@ resource "datadog_monitor" "db_eviction" {
 }
 
 resource "datadog_monitor" "db_usage" {
-  name               = "Redis Enterprise Usage Alert"
+  name               = "Redis Enterprise Prometheus  Usage Alert"
   type               = "metric alert"
   message            = "Redis is running out of memory"
   escalation_message = "Some escalation notification goes here"
