@@ -140,7 +140,7 @@ resource "datadog_dashboard" "crdb_dashboard" {
     }
     widget_layout {
       height = 10
-      width  = 90
+      width  = 92
       x      = 0
       y      = 44
     }
