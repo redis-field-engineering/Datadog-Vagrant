@@ -12,6 +12,8 @@ The Datadog Agent will run on any node that is peered with Redis Cloud and submi
 
 ### Configuring Datadog Agent to Collect Data
 
+You can run the Datadog agent on a node or use a [Docker Container](https://github.com/redis-field-engineering/Docker-Datadog-Redis-Cloud)
+
 ```
 cd /etc/datadog-agent/conf.d/prometheus.d/
 sudo cp conf.yaml.example conf.yaml
